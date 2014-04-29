@@ -17,6 +17,7 @@
 #include "ruby/util.h"
 #include "internal.h"
 #include "vm_core.h"
+#undef HAVE_GRP_H
 
 #include <stdio.h>
 #include <errno.h>

@@ -195,7 +195,7 @@ VALUE rb_vm_top_self();
 VALUE rb_vm_cbase(void);
 
 #ifndef CharNext		/* defined as CharNext[AW] on Windows. */
-#define CharNext(p) ((p) + mblen((p), RUBY_MBCHAR_MAXSIZE))
+#define CharNext(p) ((p) + 1)
 #endif
 
 #if defined DOSISH || defined __CYGWIN__

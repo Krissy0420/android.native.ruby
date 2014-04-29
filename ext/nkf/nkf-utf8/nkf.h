@@ -162,6 +162,7 @@ void  setbinmode(FILE *fp)
 # endif
 #endif
 
+#undef HAVE_LANGINFO_H
 #ifdef HAVE_LANGINFO_H
 #include <langinfo.h>
 #endif
