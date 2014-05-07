@@ -663,7 +663,6 @@ dir_tell(VALUE dir)
 #define dir_tell rb_f_notimplement
 #endif
 
-#ifdef HAVE_SEEKDIR
 /*
  *  call-seq:
  *     dir.seek( integer ) -> dir
@@ -685,12 +684,13 @@ dir_seek(VALUE dir, VALUE pos)
     long p = NUM2LONG(pos);
 
     GetDIR(dir, dirp);
+#ifdef HAVE_SEEKDIR
     seekdir(dirp->dir, p);
     return dir;
-}
 #else
-#define dir_seek rb_f_notimplement
+    rb_notimplement();
 #endif
+}
 
 /*
  *  call-seq:
