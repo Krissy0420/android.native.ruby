@@ -40,6 +40,10 @@ extern "C" {
 #include <sys/time.h>
 #endif
 
+#if defined(__BIONIC__)
+#include <sys/select.h>
+#endif
+
 #include "ruby/st.h"
 
 #if defined __GNUC__ && __GNUC__ >= 4
