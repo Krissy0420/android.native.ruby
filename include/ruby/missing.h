@@ -20,6 +20,7 @@ extern "C" {
 
 #include "ruby/config.h"
 #include <stddef.h>
+#include <math.h>
 #ifdef RUBY_EXTCONF_H
 #include RUBY_EXTCONF_H
 #endif
