@@ -130,7 +130,8 @@ if have_func("sendmsg") | have_func("recvmsg")
   have_struct_member('struct msghdr', 'msg_accrights', ['sys/types.h', 'sys/socket.h'])
 end
 
-if checking_for("recvmsg() with MSG_PEEK allocate file descriptors") {try_run(cpp_include(headers) + <<'EOF')}
+if (CROSS_COMPILING and RUBY_PLATFORM =~ /androideabi/) or
+checking_for("recvmsg() with MSG_PEEK allocate file descriptors") {try_run(cpp_include(headers) + <<'EOF')}
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -254,6 +255,7 @@ EOF
 end
 
 getaddr_info_ok = (enable_config("wide-getaddrinfo") && :wide) ||
+	(CROSS_COMPILING and RUBY_PLATFORM =~ /androideabi/ && :os) ||
   (checking_for("wide getaddrinfo") {try_run(<<EOF)} && :os)
 #{cpp_include(headers)}
 #include <stdlib.h>
