@@ -457,13 +457,19 @@ end
 
 have_header("sys/un.h")
 have_header("sys/uio.h")
-have_type("struct in_pktinfo", headers) {|src|
-  src.sub(%r'^/\*top\*/', '\1'"\n#if defined(IPPROTO_IP) && defined(IP_PKTINFO)") <<
-  "#else\n" << "#error\n" << ">>>>>> no in_pktinfo <<<<<<\n" << "#endif\n"
+	                                                                     
+
+# workaround for recent Windows SDK
+$defs << "-DIPPROTO_IPV6=IPPROTO_IPV6" if $defs.include?("-DHAVE_CONST_IPPROTO_IPV6") && !have_macro("IPPROTO_IPV6")
+$defs << "-DIPPROTO_IP=IPPROTO_IP" if $defs.include?("-DHAVE_CONST_IPPROTO_IP") && !have_macro("IPPROTO_IP")
+	                                                                     
+have_type("struct in_pktinfo", headers, $defs.join(" ")) {|src|
+	src.sub(%r'^/\*top\*/', '\1'"\n#if defined(IPPROTO_IP) && defined(IP_PKTINFO)") <<
+	"#else\n" << "#error\n" << ">>>>>> no in_pktinfo <<<<<<\n" << "#endif\n"
 } and have_struct_member("struct in_pktinfo", "ipi_spec_dst", headers)
-have_type("struct in6_pktinfo", headers) {|src|
-  src.sub(%r'^/\*top\*/', '\1'"\n#if defined(IPPROTO_IPV6) && defined(IPV6_PKTINFO)") <<
-  "#else\n" << "#error\n" << ">>>>>> no in6_pktinfo <<<<<<\n" << "#endif\n"
+have_type("struct in6_pktinfo", headers, $defs.join(" ")) {|src|
+	src.sub(%r'^/\*top\*/', '\1'"\n#if defined(IPPROTO_IPV6) && defined(IPV6_PKTINFO)") <<
+	"#else\n" << "#error\n" << ">>>>>> no in6_pktinfo <<<<<<\n" << "#endif\n"
 }
 
 have_type("struct sockcred", headers)
@@ -479,9 +485,6 @@ have_func("if_indextoname")
 have_type("struct ip_mreq", headers) # 4.4BSD
 have_type("struct ip_mreqn", headers) # Linux 2.4
 have_type("struct ipv6_mreq", headers) # RFC 3493
-
-# workaround for recent Windows SDK
-$defs << "-DIPPROTO_IPV6=IPPROTO_IPV6" if $defs.include?("-DHAVE_CONST_IPPROTO_IPV6") && !have_macro("IPPROTO_IPV6")
 
 $distcleanfiles << "constants.h" << "constdefs.*"
 
