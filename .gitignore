@@ -3,7 +3,6 @@
 *.bak
 *.dSYM
 *.dylib
-*.inc
 *.log
 *.o
 *.orig
@@ -16,12 +15,11 @@
 .*.time
 .DS_Store
 .ccmalloc
-.ext
+.ext/arm-linux-androideabi
 .pc
 .ppack
 .svn
 Makefile
-extconf.h
 y.output
 y.tab.c
 
@@ -51,38 +49,27 @@ y.tab.c
 /configure
 /doc/capi
 /enc.mk
-/enc/trans/*.c
-/encdb.h
 /exts.mk
 /goruby
-/id.h
 /largefile.h
-/lex.c
 /libruby*.*
 /miniprelude.c
 /miniruby
 /newdate.rb
-/newline.c
 /newver.rb
-/parse.c
-/parse.h
 /patches
 /patches-master
 /pitest.rb
 /ppack
-/prelude.c
 /preview
-/rbconfig.rb
 /rename2.h
 /repack
-/revision.h
 /riscos
 /rubicon
 /ruby
 /ruby-man.rd.gz
 /test.rb
 /tmp
-/transdb.h
 /uncommon.mk
 /web
 /yasmdata.rb
@@ -91,7 +78,7 @@ y.tab.c
 /benchmark/bmx_*.rb
 
 # /enc/trans/
-/enc/trans/*.c
+#/enc/trans/*.c
 
 # /ext/
 /ext/extinit.c
@@ -101,24 +88,14 @@ y.tab.c
 
 # /ext/dl/callback/
 /ext/dl/callback/*.func
-/ext/dl/callback/callback-*.c
-/ext/dl/callback/callback.c
 
 # /ext/iconv/
 /ext/iconv/config.charset
 /ext/iconv/iconv.rb
 
 # /ext/ripper/
-/ext/ripper/eventids1.c
-/ext/ripper/eventids2table.c
-/ext/ripper/ripper.*
 /ext/ripper/ids1
 /ext/ripper/ids2
-
-# /ext/socket/
-/ext/socket/constants.h
-/ext/socket/constdefs.h
-/ext/socket/constdefs.c
 
 # /ext/tk/
 /ext/tk/config_list
