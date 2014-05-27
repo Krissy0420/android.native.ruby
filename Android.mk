@@ -1477,8 +1477,8 @@ LOCAL_C_INCLUDES:= \
 LOCAL_SRC_FILES:= \
 	ext/digest/md5/md5init.c\
 	ext/digest/md5/md5ossl.c
-LOCAL_LDLIBS:= \
-	-lcrypto
+LOCAL_SHARED_LIBRARIES:= \
+	libcrypto
 LOCAL_MODULE := RUBY_digest_md5
 
 include $(BUILD_SHARED_LIBRARY)
@@ -1505,8 +1505,8 @@ LOCAL_C_INCLUDES:= \
 LOCAL_SRC_FILES:= \
 	ext/digest/rmd160/rmd160init.c\
 	ext/digest/rmd160/rmd160ossl.c
-LOCAL_LDLIBS:= \
-	-lcrypto
+LOCAL_SHARED_LIBRARIES:= \
+	libcrypto
 LOCAL_MODULE := RUBY_digest_rmd160
 
 include $(BUILD_SHARED_LIBRARY)
@@ -1533,8 +1533,8 @@ LOCAL_C_INCLUDES:= \
 LOCAL_SRC_FILES:= \
 	ext/digest/sha1/sha1init.c\
 	ext/digest/sha1/sha1ossl.c
-LOCAL_LDLIBS:= \
-	-lcrypto
+LOCAL_SHARED_LIBRARIES:= \
+	libcrypto
 LOCAL_MODULE := RUBY_digest_sha1
 
 include $(BUILD_SHARED_LIBRARY)
@@ -1561,8 +1561,8 @@ LOCAL_C_INCLUDES:= \
 LOCAL_SRC_FILES:= \
 	ext/digest/sha2/sha2init.c\
 	ext/digest/sha2/sha2ossl.c
-LOCAL_LDLIBS:= \
-	-lcrypto
+LOCAL_SHARED_LIBRARIES:= \
+	libcrypto
 LOCAL_MODULE := RUBY_digest_sha2
 
 include $(BUILD_SHARED_LIBRARY)
@@ -1981,9 +1981,9 @@ LOCAL_SRC_FILES:= \
 	ext/openssl/ossl_x509revoked.c\
 	ext/openssl/ossl_ns_spki.c\
 	ext/openssl/ossl_engine.c
-LOCAL_LDLIBS:= \
-	-lssl\
-	-lcrypto
+LOCAL_SHARED_LIBRARIES:= \
+	libssl\
+	libcrypto
 LOCAL_MODULE := RUBY_openssl
 
 include $(BUILD_SHARED_LIBRARY)
@@ -2319,7 +2319,8 @@ LOCAL_C_INCLUDES:= \
 	$(LOCAL_PATH)/include
 LOCAL_SRC_FILES:= \
 	ext/zlib/zlib.c
-LOCAL_LDLIBS += -lz
+LOCAL_SHARED_LIBRARIES:= \
+	libz
 LOCAL_MODULE := RUBY_zlib
 
 include $(BUILD_SHARED_LIBRARY)
@@ -2345,8 +2346,8 @@ LOCAL_SRC_FILES:= \
 	main.c
 LOCAL_STATIC_LIBRARIES:= \
 	libruby-static
-LOCAL_LDLIBS:= \
-	-ldl
+LOCAL_SHARED_LIBRARIES:= \
+	libdl
 LOCAL_MODULE := ruby
 
 
