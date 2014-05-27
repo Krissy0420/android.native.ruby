@@ -1,5 +1,7 @@
 LOCAL_PATH := $(call my-dir)
 
+NDK_TOOLCHAIN_VERSION := 4.8
+
 #original path: libruby-static.a
 include $(CLEAR_VARS)
 
