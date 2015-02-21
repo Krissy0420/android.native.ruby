@@ -1503,8 +1503,10 @@ LOCAL_C_INCLUDES:= \
 LOCAL_SRC_FILES:= \
 	ext/digest/rmd160/rmd160init.c\
 	ext/digest/rmd160/rmd160ossl.c
-LOCAL_SHARED_LIBRARIES:= \
-	libcrypto
+
+# RMD160 missing on certain devices ( API >= 21 )
+LOCAL_STATIC_LIBRARIES:= libcrypto_static
+
 LOCAL_MODULE := RUBY_digest_rmd160
 
 include $(BUILD_SHARED_LIBRARY)
