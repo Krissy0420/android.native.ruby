@@ -1475,8 +1475,7 @@ LOCAL_C_INCLUDES:= \
 LOCAL_SRC_FILES:= \
 	ext/digest/md5/md5init.c\
 	ext/digest/md5/md5ossl.c
-LOCAL_SHARED_LIBRARIES:= \
-	libcrypto
+LOCAL_STATIC_LIBRARIES:= libcrypto_static
 LOCAL_MODULE := RUBY_digest_md5
 
 include $(BUILD_SHARED_LIBRARY)
@@ -1504,7 +1503,6 @@ LOCAL_SRC_FILES:= \
 	ext/digest/rmd160/rmd160init.c\
 	ext/digest/rmd160/rmd160ossl.c
 
-# RMD160 missing on certain devices ( API >= 21 )
 LOCAL_STATIC_LIBRARIES:= libcrypto_static
 
 LOCAL_MODULE := RUBY_digest_rmd160
@@ -1533,8 +1531,7 @@ LOCAL_C_INCLUDES:= \
 LOCAL_SRC_FILES:= \
 	ext/digest/sha1/sha1init.c\
 	ext/digest/sha1/sha1ossl.c
-LOCAL_SHARED_LIBRARIES:= \
-	libcrypto
+LOCAL_STATIC_LIBRARIES:= libcrypto_static
 LOCAL_MODULE := RUBY_digest_sha1
 
 include $(BUILD_SHARED_LIBRARY)
@@ -1561,8 +1558,7 @@ LOCAL_C_INCLUDES:= \
 LOCAL_SRC_FILES:= \
 	ext/digest/sha2/sha2init.c\
 	ext/digest/sha2/sha2ossl.c
-LOCAL_SHARED_LIBRARIES:= \
-	libcrypto
+LOCAL_STATIC_LIBRARIES:= libcrypto_static
 LOCAL_MODULE := RUBY_digest_sha2
 
 include $(BUILD_SHARED_LIBRARY)
@@ -1981,9 +1977,9 @@ LOCAL_SRC_FILES:= \
 	ext/openssl/ossl_x509revoked.c\
 	ext/openssl/ossl_ns_spki.c\
 	ext/openssl/ossl_engine.c
-LOCAL_SHARED_LIBRARIES:= \
-	libssl\
-	libcrypto
+LOCAL_STATIC_LIBRARIES:= \
+	libcrypto_static\
+	libssl_static
 LOCAL_MODULE := RUBY_openssl
 
 include $(BUILD_SHARED_LIBRARY)
