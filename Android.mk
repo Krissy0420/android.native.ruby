@@ -1978,8 +1978,8 @@ LOCAL_SRC_FILES:= \
 	ext/openssl/ossl_ns_spki.c\
 	ext/openssl/ossl_engine.c
 LOCAL_STATIC_LIBRARIES:= \
-	libcrypto_static\
-	libssl
+	libssl_static\
+	libcrypto_static
 LOCAL_MODULE := RUBY_openssl
 
 include $(BUILD_SHARED_LIBRARY)
